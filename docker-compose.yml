@@ -2,8 +2,14 @@ version: '3.7'
 
 services:
   web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: apache-php-fpm-alpine:latest
+    container_name: web
     # php 8.3.7 - iconv bug fix
-    image: 8ct8pus/apache-php-fpm-alpine:2.3.1
+    # image: 8ct8pus/apache-php-fpm-alpine:2.3.1
+    #
     # php 8.3.7
     #image: 8ct8pus/apache-php-fpm-alpine:2.3.0
     # php 8.3.0
@@ -45,7 +51,6 @@ services:
     # development image
     #image: apache-php-fpm-alpine:dev
     hostname: testing
-    container_name: web
     ports:
       - 80:80
       - 443:443
