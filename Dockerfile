@@ -200,6 +200,9 @@ RUN rm -rf /var/cache/apk/*
 # -S create a system user
 RUN adduser -H -D -S -G www-data -s /sbin/nologin www-data
 
+# copy backup httpd.conf
+RUN cp /etc/apache2/httpd.conf /etc/apache2/httpd.bak.conf
+
 # update user and group apache runs under
 RUN sed -i 's|User apache|User www-data|g' /etc/apache2/httpd.conf
 RUN sed -i 's|Group apache|Group www-data|g' /etc/apache2/httpd.conf
